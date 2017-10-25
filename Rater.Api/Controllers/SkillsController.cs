@@ -21,16 +21,22 @@ namespace Rater.Api.Controllers
 
         // GET api/skills/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var item = skills.SingleOrDefault(s => s.Id == id);
+            if (item == null)
+                return NotFound();
+            else
+                return Ok(item);
         }
 
         // POST api/skills
         [HttpPost]
-        public void Post([FromBody]Skill value)
+        public Skill Post([FromBody]Skill value)
         {
             skills.Add(value);
+            value.Id = skills.Count;
+            return value;
         }
 
         // PUT api/skills/5
