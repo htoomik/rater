@@ -9,11 +9,14 @@ namespace Rater.Api.Controllers
     [Route("api/[controller]")]
     public class SkillsController : Controller
     {
+        private List<Skill> skills = new List<Skill>();
+
+
         // GET api/skills
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<Skill> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new List<Skill>(skills);
         }
 
         // GET api/skills/5
@@ -25,8 +28,9 @@ namespace Rater.Api.Controllers
 
         // POST api/skills
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Skill value)
         {
+            skills.Add(value);
         }
 
         // PUT api/skills/5
