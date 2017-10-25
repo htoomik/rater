@@ -1,37 +1,39 @@
 using System;
 using Xunit;
 using Rater.Api.Controllers;
+using Rater.Api.Data;
+using Moq;
+using System.Collections.Generic;
 
 namespace Rater.Tests
 {
     public class GetAll
     {
         [Fact]
-        public void When_NothingAdded_Returns_EmptyList()
+        public void When_NoSkills_Returns_EmptyList()
         {
-            var skills = new SkillsController().Get();
+            var dataStore = new Mock<ISkillsDataStore>();
+            dataStore.Setup(ds => ds.Get()).Returns(new List<Skill>());
+
+            var controller = new SkillsController(dataStore.Object);
+
+            var skills = controller.Get();
+            
             Assert.Empty(skills);
         }
 
 
         [Fact]
-        public void When_OneSkillAdded_Returns_OneSkill()
+        public void When_HasSkills_Returns_Skills()
         {
-            var controller = new SkillsController();
+            var dataStore = new Mock<ISkillsDataStore>();
+            dataStore.Setup(ds => ds.Get()).Returns(new List<Skill> { new Skill() });
+
+            var controller = new SkillsController(dataStore.Object);
+
             controller.Post(new Skill());
             var skills = controller.Get();
             Assert.Single(skills);
-        }
-        
-
-        [Fact]
-        public void When_TwoSkillsAdded_Returns_TwoSkills()
-        {
-            var controller = new SkillsController();
-            controller.Post(new Skill());
-            controller.Post(new Skill());
-            var skills = controller.Get();
-            Assert.Collection(skills, s => {;}, s => {;}); 
         }
     }
 }

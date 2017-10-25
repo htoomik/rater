@@ -1,0 +1,34 @@
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using Rater.Api.Controllers;
+using Rater.Api.Data;
+using Xunit;
+
+namespace Rater.Tests.SkillsDataStoreTests
+{
+    [Collection("SkillsDataStoreTests")]
+    public class Get
+    {
+        [Fact]
+        public void When_ValidId_Returns_Item_WithThatId()
+        {
+            var dataStore = new SkillsDataStore();
+            dataStore.Add(new Skill());
+            
+            var skill = dataStore.Get(1);
+
+            Assert.Equal(skill.Id, 1);
+        }
+
+
+        [Fact]
+        public void When_InvalidId_Returns_Null()
+        {
+            var dataStore = new SkillsDataStore();
+            
+            var result = dataStore.Get(1);
+
+            Assert.Null(result);
+        }
+    }
+}

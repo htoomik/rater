@@ -3,27 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Rater.Api.Data;
 
 namespace Rater.Api.Controllers
 {
     [Route("api/[controller]")]
     public class SkillsController : Controller
     {
-        private List<Skill> skills = new List<Skill>();
+        private readonly ISkillsDataStore dataStore;
 
+        public SkillsController(ISkillsDataStore dataStore)
+        {
+            this.dataStore = dataStore;
+        }
 
         // GET api/skills
         [HttpGet]
         public List<Skill> Get()
         {
-            return new List<Skill>(skills);
+            return dataStore.Get();
         }
 
         // GET api/skills/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var item = skills.SingleOrDefault(s => s.Id == id);
+            var item = dataStore.Get(id);
             if (item == null)
                 return NotFound();
             else
@@ -34,8 +39,7 @@ namespace Rater.Api.Controllers
         [HttpPost]
         public Skill Post([FromBody]Skill value)
         {
-            skills.Add(value);
-            value.Id = skills.Count;
+            dataStore.Add(value);
             return value;
         }
 
