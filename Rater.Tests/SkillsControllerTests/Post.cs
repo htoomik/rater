@@ -10,6 +10,20 @@ namespace Rater.Tests.SkillsControllerTests
     public class Post : Base
     {
         [Fact]
+        public void When_PostingItem_StoresItem()
+        {
+            var dataStore = new Mock<ISkillsDataStore>();
+            dataStore.Setup(ds => ds.Add(It.IsAny<Skill>())).Returns((Skill s) => s);
+
+            var controller = new SkillsController(dataStore.Object);
+            var original = new Skill();
+            controller.Post(original);
+            
+            dataStore.Verify(ds => ds.Add(It.Is<Skill>(s => s == original)));
+        }
+
+
+        [Fact]
         public void When_PostingItem_Returns_Item()
         {
             var dataStore = new Mock<ISkillsDataStore>();
