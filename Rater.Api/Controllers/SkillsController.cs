@@ -39,6 +39,19 @@ namespace Rater.Api.Controllers
         [HttpPost]
         public Skill Post([FromBody]Skill value)
         {
+            if (value.Id > 0)
+            {
+                var id = value.Id;
+                var existing = dataStore.Get(id);
+                if (existing != null)
+                {
+                    if (!string.IsNullOrEmpty(value.Name))
+                        existing.Name = value.Name;
+                    if (value.Rating != 0)
+                        existing.Rating = value.Rating;
+                    return existing;
+                }
+            }
             dataStore.Add(value);
             return value;
         }
