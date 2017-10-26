@@ -5,7 +5,7 @@ using Rater.Api.Data;
 using Moq;
 using System.Collections.Generic;
 
-namespace Rater.Tests
+namespace Rater.Tests.SkillsControllerTests
 {
     public class GetAll
     {

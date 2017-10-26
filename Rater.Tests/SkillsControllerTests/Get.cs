@@ -4,7 +4,7 @@ using Rater.Api.Controllers;
 using Rater.Api.Data;
 using Xunit;
 
-namespace Rater.Tests
+namespace Rater.Tests.SkillsControllerTests
 {
     public class Get
     {
