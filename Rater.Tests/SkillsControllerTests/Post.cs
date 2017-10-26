@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Rater.Tests.SkillsControllerTests
 {
-    public class Post
+    public class Post : Base
     {
         [Fact]
         public void When_PostingItem_Returns_Item()

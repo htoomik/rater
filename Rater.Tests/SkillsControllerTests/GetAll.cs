@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Rater.Tests.SkillsControllerTests
 {
-    public class GetAll
+    public class GetAll : Base
     {
         [Fact]
         public void When_NoSkills_Returns_EmptyList()

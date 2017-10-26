@@ -9,7 +9,7 @@ namespace Rater.Tests.SkillsControllerTests
 {
     // These turned out as integration tests rather than unit tests, but I cannot think of a tidy way of
     // unit testing this
-    public class PostWithId
+    public class PostWithId : Base
     {
         [Fact]
         public void When_ItemFound_OverwritesProperties()
@@ -26,7 +26,7 @@ namespace Rater.Tests.SkillsControllerTests
             var id = controller.Post(original).Id;
 
             var updated = new Skill { Name = newName, Rating = newRating };
-            var result = ((Skill)((OkObjectResult)controller.Post(id, updated)).Value);
+            var result = GetOkResultValue(controller.Post(id, updated));
 
             // Checking properties one by one is OK as long as they are few and stable.
             // For a more complex object, I'd consider using reflection to ensure that the test
@@ -53,7 +53,7 @@ namespace Rater.Tests.SkillsControllerTests
             var id = controller.Post(original).Id;
 
             var updated = new Skill { Name = newName };
-            var result = (Skill)((OkObjectResult)controller.Post(id, updated)).Value;
+            var result = GetOkResultValue(controller.Post(id, updated));
 
             Assert.Equal(originalName, result.Name);
         }
@@ -72,7 +72,7 @@ namespace Rater.Tests.SkillsControllerTests
             var id = controller.Post(original).Id;
 
             var updated = new Skill { Rating = newRating };
-            var result = (Skill)((OkObjectResult)controller.Post(id, updated)).Value;
+            var result = GetOkResultValue(controller.Post(id, updated));
 
             Assert.Equal(originalRating, result.Rating);
         }
