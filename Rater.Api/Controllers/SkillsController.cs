@@ -67,9 +67,14 @@ namespace Rater.Api.Controllers
 
         // PUT api/skills/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(int id, [FromBody]Skill value)
         {
+            var result = dataStore.Update(id, value);
+            if (result != null)
+                return Ok(value);
+            return NotFound();
         }
+
 
         // DELETE api/skills/5
         [HttpDelete("{id}")]

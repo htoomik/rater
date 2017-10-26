@@ -30,5 +30,16 @@ namespace Rater.Api.Data
                 return null;
             return skills[id];
         }
+
+
+        public Skill Update(int id, Skill value)
+        {
+            if (!skills.ContainsKey(id))
+                return null;
+                
+            value.Id = id;
+            skills[id] = value;
+            return value;
+        }
     }
 }

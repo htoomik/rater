@@ -7,6 +7,7 @@ namespace Rater.Api.Data
         List<Skill> Get();
         Skill Get(int id);
         Skill Add(Skill value);
+        Skill Update(int id, Skill value);
 
         int Count { get; }
     }
