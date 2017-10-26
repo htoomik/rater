@@ -28,11 +28,15 @@ namespace Rater.Api.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var item = dataStore.Get(id);
-            if (item == null)
-                return NotFound();
-            else
+            try
+            {
+                var item = dataStore.Get(id);
                 return Ok(item);
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
         }
 
         // POST api/skills
@@ -52,16 +56,19 @@ namespace Rater.Api.Controllers
         [HttpPost]
         public IActionResult Post(int id, [FromBody]Skill value)
         {
-            var existing = dataStore.Get(id);
-            if (existing != null)
+            try 
             {
+                var existing = dataStore.Get(id);
                 if (!string.IsNullOrEmpty(value.Name))
                     existing.Name = value.Name;
                 if (value.Rating != 0)
                     existing.Rating = value.Rating;
                 return Ok(existing);
             }
-            return NotFound();
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
         }
 
 
@@ -69,10 +76,15 @@ namespace Rater.Api.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]Skill value)
         {
-            var result = dataStore.Update(id, value);
-            if (result != null)
+            try 
+            {
+                var result = dataStore.Update(id, value);
                 return Ok(value);
-            return NotFound();
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
         }
 
 

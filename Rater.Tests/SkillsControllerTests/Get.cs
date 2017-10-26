@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Rater.Api;
 using Rater.Api.Controllers;
 using Rater.Api.Data;
 using Xunit;
@@ -32,7 +33,7 @@ namespace Rater.Tests.SkillsControllerTests
             const int id = 1;
 
             var dataStore = new Mock<ISkillsDataStore>();
-            dataStore.Setup(ds => ds.Get(id)).Returns<Skill>(null);
+            dataStore.Setup(ds => ds.Get(id)).Throws<NotFoundException>();
 
             var controller = new SkillsController(dataStore.Object);
             

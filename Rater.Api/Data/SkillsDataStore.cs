@@ -27,7 +27,7 @@ namespace Rater.Api.Data
         public Skill Get(int id)
         {
             if (!skills.ContainsKey(id))
-                return null;
+                throw new NotFoundException();
             return skills[id];
         }
 
@@ -35,8 +35,8 @@ namespace Rater.Api.Data
         public Skill Update(int id, Skill value)
         {
             if (!skills.ContainsKey(id))
-                return null;
-                
+                throw new NotFoundException();
+
             value.Id = id;
             skills[id] = value;
             return value;

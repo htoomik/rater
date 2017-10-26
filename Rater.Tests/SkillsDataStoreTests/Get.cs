@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Rater.Api;
 using Rater.Api.Controllers;
 using Rater.Api.Data;
 using Xunit;
@@ -25,10 +26,8 @@ namespace Rater.Tests.SkillsDataStoreTests
         public void When_InvalidId_Returns_Null()
         {
             var dataStore = new SkillsDataStore();
-            
-            var result = dataStore.Get(1);
 
-            Assert.Null(result);
+            Assert.Throws<NotFoundException>(() => dataStore.Get(1));
         }
     }
 }

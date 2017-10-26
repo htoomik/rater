@@ -1,3 +1,4 @@
+using Rater.Api;
 using Rater.Api.Data;
 using Xunit;
 
@@ -40,10 +41,8 @@ namespace Rater.Tests.SkillsDataStoreTests
         {
             var dataStore = new SkillsDataStore();
             const int id = 1;
-            
-            var actual = dataStore.Update(id, new Skill());
 
-            Assert.Null(actual);
+            Assert.Throws<NotFoundException>(() => dataStore.Update(id, new Skill()));
         }
     }
 }
