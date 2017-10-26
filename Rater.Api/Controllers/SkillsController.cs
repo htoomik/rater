@@ -37,14 +37,14 @@ namespace Rater.Api.Controllers
 
         // POST api/skills
         [HttpPost]
-        public Skill Post([FromBody]Skill value)
+        public IActionResult Post([FromBody]Skill value)
         {
+            // If you want to POST an update to an existing item, use the overload with id parameter
             if (value.Id > 0)
-            {
-                //throw
-            }
+                return BadRequest();
+
             dataStore.Add(value);
-            return value;
+            return Ok(value);
         }
 
 

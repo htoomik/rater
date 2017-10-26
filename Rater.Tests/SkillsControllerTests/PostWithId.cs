@@ -23,7 +23,7 @@ namespace Rater.Tests.SkillsControllerTests
             var controller = new SkillsController(dataStore);
 
             var original = new Skill { Name = originalName, Rating = originalRating };
-            var id = controller.Post(original).Id;
+            var id = GetOkResultValue(controller.Post(original)).Id;
 
             var updated = new Skill { Name = newName, Rating = newRating };
             var result = GetOkResultValue(controller.Post(id, updated));
@@ -50,7 +50,7 @@ namespace Rater.Tests.SkillsControllerTests
             var controller = new SkillsController(dataStore);
 
             var original = new Skill { Name = originalName };
-            var id = controller.Post(original).Id;
+            var id = GetOkResultValue(controller.Post(original)).Id;
 
             var updated = new Skill { Name = newName };
             var result = GetOkResultValue(controller.Post(id, updated));
@@ -69,7 +69,7 @@ namespace Rater.Tests.SkillsControllerTests
             var controller = new SkillsController(dataStore);
 
             var original = new Skill { Rating = originalRating };
-            var id = controller.Post(original).Id;
+            var id = GetOkResultValue(controller.Post(original)).Id;
 
             var updated = new Skill { Rating = newRating };
             var result = GetOkResultValue(controller.Post(id, updated));
@@ -84,7 +84,7 @@ namespace Rater.Tests.SkillsControllerTests
             var dataStore = new SkillsDataStore();
             var controller = new SkillsController(dataStore);
 
-            var id = controller.Post(new Skill()).Id;
+            var id = GetOkResultValue(controller.Post(new Skill())).Id;
 
             var result = controller.Post(id + 1, new Skill());
 

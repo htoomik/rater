@@ -17,8 +17,21 @@ namespace Rater.Tests.SkillsControllerTests
 
             var controller = new SkillsController(dataStore.Object);
             var original = new Skill();
-            var result = controller.Post(original);
+            var result = GetOkResultValue(controller.Post(original));
             Assert.Equal(result, original);
+        }
+
+
+        [Fact]
+        public void When_PostedItemHasId_Returns_40x()
+        {
+            var dataStore = new Mock<ISkillsDataStore>();
+            var controller = new SkillsController(dataStore.Object);
+
+            var original = new Skill { Id = 1 };
+            var result = controller.Post(original);
+
+            Assert.IsType(typeof(BadRequestResult), result);
         }
     }
 }
