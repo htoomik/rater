@@ -41,20 +41,29 @@ namespace Rater.Api.Controllers
         {
             if (value.Id > 0)
             {
-                var id = value.Id;
-                var existing = dataStore.Get(id);
-                if (existing != null)
-                {
-                    if (!string.IsNullOrEmpty(value.Name))
-                        existing.Name = value.Name;
-                    if (value.Rating != 0)
-                        existing.Rating = value.Rating;
-                    return existing;
-                }
+                //throw
             }
             dataStore.Add(value);
             return value;
         }
+
+
+        // POST api/skills/5
+        [HttpPost]
+        public IActionResult Post(int id, [FromBody]Skill value)
+        {
+            var existing = dataStore.Get(id);
+            if (existing != null)
+            {
+                if (!string.IsNullOrEmpty(value.Name))
+                    existing.Name = value.Name;
+                if (value.Rating != 0)
+                    existing.Rating = value.Rating;
+                return Ok(existing);
+            }
+            return NotFound();
+        }
+
 
         // PUT api/skills/5
         [HttpPut("{id}")]
