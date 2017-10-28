@@ -14,6 +14,12 @@ const SKILLS : Skill[] =
     selector: 'my-app',
     template: `
     <h1>{{title}}</h1>
+    <div>
+        Add skill:
+        <input #newSkillName>
+        <input type="number" #newSkillRating>
+        <button (click)="addSkill(newSkillName.value, newSkillRating.value)">Add</button>
+    </div>
     <ul>
         <li *ngFor="let skill of skills">
             <span>{{skill.name}}</span>
@@ -27,4 +33,9 @@ export class AppComponent
 {
     title = 'Skills';
     skills = SKILLS;
+
+    addSkill(name: string, rating: number)
+    {
+        this.skills.push({ id: 0, name: name, rating: rating });
+    }
 }
