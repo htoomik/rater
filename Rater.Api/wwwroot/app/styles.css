@@ -23,6 +23,13 @@ input[type="radio"].toggle
     margin-bottom: 0;
 }
 
+.btnDelete
+{
+    background-color: transparent;
+    font-size: 150%;
+    color: #aaaaaa;
+}
+
 #skillsList li
 {
     list-style-type: none;

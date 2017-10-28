@@ -29,4 +29,9 @@ export class AppComponent
         this.skills.push(this.model);
         this.model = new Skill();
     }
+
+    removeSkill(id: number)
+    {
+        console.log("removing skill " + id);
+    }
 }

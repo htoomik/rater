@@ -19,6 +19,7 @@
                         <span [ngClass]="r == skill.rating ? 'btn number btn-primary' : 'btn number btn-outline-secondary'">{{r}}</span>
                     </span>
                 </span>
+                <button class="btn btnDelete" (click)="removeSkill(skill.id)">&times;</button>
             </li>
         </ul>
     </div>
