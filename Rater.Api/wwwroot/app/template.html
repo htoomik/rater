@@ -4,18 +4,24 @@
         <div>
             Add another skill:
         </div>
-        <input [(ngModel)]="model.name">
+        <input class="name" [(ngModel)]="model.name">
         <span *ngFor="let r of validRatings">
             <input type="radio" id="rating{{r}}" value="{{r}}" [(ngModel)]="model.rating" class="toggle">
-            <label for="rating{{r}}" [ngClass]="r == model.rating ? 'btn btn-primary' : 'btn btn-secondary'">{{r}}</label>
+            <label for="rating{{r}}" [ngClass]="r == model.rating ? 'btn number btn-primary' : 'btn number btn-secondary'">{{r}}</label>
         </span>
         <button class="btn btn-success" (click)="addSkill()">Add</button>
     </div>
     <div id="skillsList">
         <ul>
             <li *ngFor="let skill of skills">
-                <span>{{skill.name}}</span>
-                <span>{{skill.rating}}</span>
+                <span class="name">
+                    {{skill.name}}
+                </span>
+                <span>
+                    <span *ngFor="let r of validRatings">
+                        <span [ngClass]="r == skill.rating ? 'btn number btn-primary' : 'btn number btn-secondary'">{{r}}</span>
+                    </span>
+                </span>
             </li>
         </ul>
     </div>
