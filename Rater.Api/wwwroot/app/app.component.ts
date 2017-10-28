@@ -14,24 +14,7 @@ const VALID_RATINGS : number[] = [ 0, 1, 2, 3, 4, 5 ];
 
 @Component({
     selector: 'my-app',
-    template: `
-    <h1>{{title}}</h1>
-    <div>
-        Add another skill:
-        <input [(ngModel)]="model.name">
-        <div *ngFor="let r of validRatings">
-            <input type="radio" value="{{r}}" [(ngModel)]="model.rating">
-            <label>{{r}}</label>
-        </div>
-        <button (click)="addSkill()">Add</button>
-    </div>
-    <ul>
-        <li *ngFor="let skill of skills">
-            <span>{{skill.name}}</span>
-            <span>{{skill.rating}}</span>
-        </li>
-    </ul>
-    `,
+    templateUrl: './template.html',
 })
 
 export class AppComponent
