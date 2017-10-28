@@ -1,10 +1,7 @@
 <div class="container">
     <h1>Skills</h1>
     <div id="addForm">
-        <div>
-            Add another skill:
-        </div>
-        <input class="name" [(ngModel)]="model.name">
+        <input class="name" [(ngModel)]="model.name" placeholder="Add another skill...">
         <span *ngFor="let r of validRatings">
             <input type="radio" id="rating{{r}}" value="{{r}}" [(ngModel)]="model.rating" class="toggle">
             <label for="rating{{r}}" [ngClass]="r == model.rating ? 'btn number btn-primary' : 'btn number btn-outline-secondary'">{{r}}</label>
