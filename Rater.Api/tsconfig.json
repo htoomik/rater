@@ -8,6 +8,7 @@
     "experimentalDecorators": true,
     "lib": [ "es2015", "dom" ],
     "noImplicitAny": true,
+    "noStrictGenericChecks": true, // workaround for typescript compile error in rxjs
     "suppressImplicitAnyIndexErrors": true
   },
   "compileOnSave": true,
