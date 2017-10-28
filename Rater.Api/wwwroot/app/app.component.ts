@@ -15,10 +15,10 @@ const SKILLS : Skill[] =
     template: `
     <h1>{{title}}</h1>
     <div>
-        Add skill:
-        <input #newSkillName>
-        <input type="number" #newSkillRating>
-        <button (click)="addSkill(newSkillName.value, newSkillRating.value)">Add</button>
+        Add another skill:
+        <input [(ngModel)]="model.name">
+        <input type="number" [(ngModel)]="model.rating">
+        <button (click)="addSkill()">Add</button>
     </div>
     <ul>
         <li *ngFor="let skill of skills">
@@ -33,9 +33,11 @@ export class AppComponent
 {
     title = 'Skills';
     skills = SKILLS;
+    model = new Skill();
 
-    addSkill(name: string, rating: number)
+    addSkill()
     {
-        this.skills.push({ id: 0, name: name, rating: rating });
+        this.skills.push(this.model);
+        this.model = new Skill();
     }
 }
