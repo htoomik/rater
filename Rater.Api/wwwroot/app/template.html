@@ -6,7 +6,7 @@
             <input type="radio" id="rating{{r}}" value="{{r}}" [(ngModel)]="model.rating" class="toggle">
             <label for="rating{{r}}" [ngClass]="r == model.rating ? 'btn number btn-primary' : 'btn number btn-outline-secondary'">{{r}}</label>
         </span>
-        <button class="btn btn-success" (click)="addSkill()">Add</button>
+        <button class="btn btn-success w60" (click)="addSkill()">Add</button>
     </div>
     <div id="skillsList">
         <ul>
@@ -19,7 +19,9 @@
                         <span [ngClass]="r == skill.rating ? 'btn number btn-primary' : 'btn number btn-outline-secondary'">{{r}}</span>
                     </span>
                 </span>
-                <button class="btn btnDelete" (click)="removeSkill(skill.id)">&times;</button>
+                <span class="w60 tac">
+                    <button class="btn btn-primary btnDelete" (click)="removeSkill(skill.id)">&nbsp;</button>
+                </span>
             </li>
         </ul>
     </div>

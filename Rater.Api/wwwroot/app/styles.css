@@ -26,8 +26,15 @@ input[type="radio"].toggle
 .btnDelete
 {
     background-color: transparent;
-    font-size: 150%;
-    color: #aaaaaa;
+    background: url(delete.png) no-repeat center;
+    background-size: 80%;
+    border: none;
+}
+
+.btnDelete:hover
+{
+    background-color: #cccccc;
+    border-color: #cccccc;
 }
 
 #skillsList li
@@ -35,10 +42,16 @@ input[type="radio"].toggle
     list-style-type: none;
     line-height: 350%;
     margin-left: -30px;
-    padding-left: 10px;
 }
 
 li:nth-child(even)
 {
     background: #eeeeee;
+}
+
+.w60
+{
+    display: inline-block;
+    text-align: center;
+    width: 60px;
 }
