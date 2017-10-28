@@ -10,6 +10,8 @@ const SKILLS : Skill[] =
     { id: 5, name: "Angular", rating: 1 },
 ]
 
+const VALID_RATINGS : number[] = [ 0, 1, 2, 3, 4, 5 ];
+
 @Component({
     selector: 'my-app',
     template: `
@@ -17,7 +19,10 @@ const SKILLS : Skill[] =
     <div>
         Add another skill:
         <input [(ngModel)]="model.name">
-        <input type="number" [(ngModel)]="model.rating">
+        <div *ngFor="let r of validRatings">
+            <input type="radio" value="{{r}}" [(ngModel)]="model.rating">
+            <label>{{r}}</label>
+        </div>
         <button (click)="addSkill()">Add</button>
     </div>
     <ul>
@@ -33,6 +38,7 @@ export class AppComponent
 {
     title = 'Skills';
     skills = SKILLS;
+    validRatings = VALID_RATINGS;
     model = new Skill();
 
     addSkill()
