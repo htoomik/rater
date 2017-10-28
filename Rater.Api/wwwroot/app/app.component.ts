@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import { Skill } from './skill';
+import { SkillsService } from './skills-service';
 
 const SKILLS : Skill[] =
 [
@@ -15,18 +18,40 @@ const VALID_RATINGS : number[] = [ 0, 1, 2, 3, 4, 5 ];
 @Component({
     selector: 'my-app',
     templateUrl: './template.html',
-    styleUrls: [ './styles.css' ]
+    styleUrls: [ './styles.css' ],
+    providers: [ SkillsService ]
 })
 
-export class AppComponent
+export class AppComponent implements OnInit
 {
-    skills = SKILLS;
+    service: SkillsService;
+    skills: Skill[];
     validRatings = VALID_RATINGS;
     model = new Skill();
 
+    constructor(private skillsService: SkillsService)
+    {
+        this.skillsService = skillsService;
+    }
+
+    getSkills()
+    {
+        this.skillsService.getAll().subscribe(
+            resultArray => this.skills = resultArray,
+            error => console.log(error)
+        );
+    }
+
+    ngOnInit()
+    {
+        this.getSkills();
+    }
+
     addSkill()
     {
-        this.skills.push(this.model);
+        this.skillsService
+            .add(this.model)
+            .subscribe(value => this.skills.push(value));
         this.model = new Skill();
     }
 
