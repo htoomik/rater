@@ -1,3 +1,9 @@
+div#addForm
+{
+    border-bottom: 1px solid #aaaaaa;
+    padding: 10px;
+}
+
 input[type="radio"].toggle 
 {
     display: none;
@@ -7,4 +13,5 @@ input[type="radio"].toggle + label
 {
     text-align: center;
     width: 3em;
+    margin-bottom: 0;
 }
