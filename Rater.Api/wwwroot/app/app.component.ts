@@ -15,6 +15,7 @@ const VALID_RATINGS : number[] = [ 0, 1, 2, 3, 4, 5 ];
 @Component({
     selector: 'my-app',
     templateUrl: './template.html',
+    styleUrls: [ './styles.css' ]
 })
 
 export class AppComponent
