@@ -1,18 +1,22 @@
-<h1>{{title}}</h1>
-<div id="addForm">
-    <div>
-        Add another skill:
+<div class="container">
+    <h1>{{title}}</h1>
+    <div id="addForm">
+        <div>
+            Add another skill:
+        </div>
+        <input [(ngModel)]="model.name">
+        <span *ngFor="let r of validRatings">
+            <input type="radio" id="rating{{r}}" value="{{r}}" [(ngModel)]="model.rating" class="toggle">
+            <label for="rating{{r}}" [ngClass]="r == model.rating ? 'btn btn-primary' : 'btn btn-secondary'">{{r}}</label>
+        </span>
+        <button class="btn btn-success" (click)="addSkill()">Add</button>
     </div>
-    <input [(ngModel)]="model.name">
-    <span *ngFor="let r of validRatings">
-        <input type="radio" id="rating{{r}}" value="{{r}}" [(ngModel)]="model.rating" class="toggle">
-        <label for="rating{{r}}" [ngClass]="r == model.rating ? 'btn btn-primary' : 'btn btn-secondary'">{{r}}</label>
-    </span>
-    <button class="btn btn-success" (click)="addSkill()">Add</button>
+    <div id="skillsList">
+        <ul>
+            <li *ngFor="let skill of skills">
+                <span>{{skill.name}}</span>
+                <span>{{skill.rating}}</span>
+            </li>
+        </ul>
+    </div>
 </div>
-<ul>
-    <li *ngFor="let skill of skills">
-        <span>{{skill.name}}</span>
-        <span>{{skill.rating}}</span>
-    </li>
-</ul>
