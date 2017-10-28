@@ -53,6 +53,7 @@ namespace Rater.Api.Controllers
 
 
         // POST api/skills/5
+        [Route("api/skills/{id}")]
         [HttpPost]
         public IActionResult Post(int id, [FromBody]Skill value)
         {
