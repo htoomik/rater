@@ -23,7 +23,7 @@ namespace Rater.Tests.SkillsDataStoreTests
 
 
         [Fact]
-        public void When_InvalidId_Returns_Null()
+        public void When_InvalidId_Expect_Throws()
         {
             var dataStore = new SkillsDataStore();
 
