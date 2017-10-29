@@ -20,7 +20,6 @@ export class SkillsService
 
     add(skill: Skill): Observable<Skill>
     {
-        console.log("posting");
         return this.http
             .post(this.API_URL, skill)
             .map((response: Response) => <Skill>response.json());
