@@ -8,6 +8,8 @@
 
 ## Could have
 - detect duplicates
+- suggestions for skill names
+- edit existing items (in place)
 
 # Front end
 - error handling
@@ -20,6 +22,7 @@
 
 # Both ends
 - logging
+- more sensible project/folder structure (client side app does not belong in Rater.API)
 
 # Marketing
 - add screenshot to README
