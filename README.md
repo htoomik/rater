@@ -2,7 +2,7 @@
 - Allows you to list and rate your skills 
 
 # What for?
-- For me to learn VS Code, .NET Core, Angular 4 etc
+- For me to learn .NET Core, Angular 4 etc
 - Demonstrate those skills to others
 
 # Try it out
