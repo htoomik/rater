@@ -20,10 +20,10 @@
 # Back end
 - use a database
 
-# Both ends
+# Both ends/infrastructure
 - logging
 - more sensible project/folder structure (client side app does not belong in Rater.API)
+- scripts to launch/publish
 
 # Marketing
-- add screenshot to README
 - hosting
