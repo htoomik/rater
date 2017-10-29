@@ -36,10 +36,11 @@ export class AppComponent implements OnInit
 
     getSkills()
     {
-        this.skillsService.getAll().subscribe(
-            resultArray => this.skills = resultArray,
-            error => console.log(error)
-        );
+        this.skillsService
+            .getAll()
+            .subscribe(
+                results => this.skills = results,
+                error => console.log(error));
     }
 
     ngOnInit()
@@ -51,7 +52,9 @@ export class AppComponent implements OnInit
     {
         this.skillsService
             .add(this.model)
-            .subscribe(value => this.skills.push(value));
+            .subscribe(
+                result => this.skills.push(result),
+                error => console.log(error));
         this.model = new Skill();
     }
 

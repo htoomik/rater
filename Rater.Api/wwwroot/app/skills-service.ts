@@ -13,10 +13,9 @@ export class SkillsService
 
     getAll(): Observable<Skill[]>
     {
-        let skills = this.http
+        return this.http
             .get(this.API_URL)
             .map((response: Response) => <Skill[]>response.json());
-        return skills;
     }
 
     add(skill: Skill): Observable<Skill>
