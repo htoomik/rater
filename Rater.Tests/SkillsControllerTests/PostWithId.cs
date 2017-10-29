@@ -1,6 +1,4 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
-using Moq;
 using Rater.Api.Controllers;
 using Rater.Api.Data;
 using Xunit;
