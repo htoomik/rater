@@ -1,5 +1,7 @@
 bin/
 obj/
 .DS_Store
+.vs/
+*.csproj.user
 */wwwroot/app/*.js
 */wwwroot/app/*.js.map
