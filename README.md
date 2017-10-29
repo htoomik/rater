@@ -19,3 +19,6 @@ POST
 
 DELETE  
 `/skills/5`
+
+# Screenshot
+![Screenshot](https://raw.githubusercontent.com/htoomik/rater/master/screenshot.png)
