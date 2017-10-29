@@ -26,4 +26,11 @@ export class SkillsService
             .post(this.API_URL, skill)
             .map((response: Response) => <Skill>response.json());
     }
+
+    delete(id: number): Observable<void>
+    {
+        return this.http
+            .delete(this.API_URL + "/" + id)
+            .map(() => null);
+    }
 }

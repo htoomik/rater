@@ -91,8 +91,17 @@ namespace Rater.Api.Controllers
 
         // DELETE api/skills/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                dataStore.Remove(id);
+                return Ok();
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
         }
     }
 }

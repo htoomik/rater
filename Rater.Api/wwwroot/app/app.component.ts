@@ -57,6 +57,11 @@ export class AppComponent implements OnInit
 
     removeSkill(id: number)
     {
-        console.log("removing skill " + id);
+        this.skillsService
+            .delete(id)
+            .map(() => this.getSkills())
+            .subscribe(
+                () => null,
+                error => console.log(error));
     }
 }

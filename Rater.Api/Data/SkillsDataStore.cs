@@ -41,5 +41,14 @@ namespace Rater.Api.Data
             skills[id] = value;
             return value;
         }
+
+
+        public void Remove(int id)
+        {
+            if (!skills.ContainsKey(id))
+                throw new NotFoundException();
+            
+            skills.Remove(id);
+        }
     }
 }
