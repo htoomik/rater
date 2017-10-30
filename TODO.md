@@ -1,7 +1,6 @@
 # Features
 
 ## Must have
-- deleting
 
 ## Should have
 - validation
