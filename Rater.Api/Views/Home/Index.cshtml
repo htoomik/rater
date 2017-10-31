@@ -12,8 +12,8 @@
         @for (var i = 0; i <= (int)ViewData["MaxRating"]; i++)
         {
             <span>
-                <input id="rating@(i)" type="radio" value="@i" class="toggle">
-                <label for="rating@(i)" class="btn number btn-outline-secondary">@i</label>
+                <input id="rating@(i)" type="radio" value="@i" class="toggle" onclick="setRating(this);">
+                <label id="rating-label@(i)" for="rating@(i)" class="btn number btn-outline-secondary">@i</label>
             </span>
         }
         <input type="submit" value="Add" class="btn btn-success w60" />
@@ -41,3 +41,11 @@
     </div>
 </div>
 }
+
+<script type="text/javascript">
+function setRating(elem)
+{
+    var rating = $(elem).val();
+    $("#rating").val(rating);
+};
+</script>
