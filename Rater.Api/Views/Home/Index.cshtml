@@ -47,5 +47,20 @@ function setRating(elem)
 {
     var rating = $(elem).val();
     $("#rating").val(rating);
+
+    for(var i = 0; i < @ViewData["MaxRating"]; i++)
+    {
+        var label = $("#rating-label" + i);
+        if (i == rating)
+        {
+            label.removeClass("btn-outline-secondary");
+            label.addClass("btn-primary");
+        }
+        else
+        {
+            label.addClass("btn-outline-secondary");
+            label.removeClass("btn-primary");
+        }
+    }
 };
 </script>
