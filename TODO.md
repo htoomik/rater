@@ -1,6 +1,7 @@
 # Features
 
 ## Must have
+- deleting in MVC version
 
 ## Should have
 - validation
