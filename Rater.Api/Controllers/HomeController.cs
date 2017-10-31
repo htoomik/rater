@@ -21,7 +21,15 @@ namespace Rater.Api.Controllers
             var skills = dataStore.Get();
             ViewData["MaxRating"] = 5;
             ViewData["Skills"] = skills;
-            return View();
+            return View(new Skill());
+        }
+
+
+        [HttpPost]
+        public IActionResult Index(Skill skill)
+        {
+            dataStore.Add(skill);
+            return Redirect("/");
         }
 
 

@@ -7,6 +7,16 @@
 <div class="container">
     <h1>Skills</h1>
     <div id="addForm">
+        @Html.TextBoxFor(model => model.Name, new { @class = "name", placeholder = "Add another skill..." })
+        @Html.HiddenFor(model => model.Rating, new { id = "rating" })
+        @for (var i = 0; i <= (int)ViewData["MaxRating"]; i++)
+        {
+            <span>
+                <input id="rating@(i)" type="radio" value="@i" class="toggle">
+                <label for="rating@(i)" class="btn number btn-outline-secondary">@i</label>
+            </span>
+        }
+        <input type="submit" value="Add" class="btn btn-success w60" />
     </div>
     <div id="skillsList">
         <ul>
