@@ -6,5 +6,28 @@
 {
 <div class="container">
     <h1>Skills</h1>
+    <div id="addForm">
+    </div>
+    <div id="skillsList">
+        <ul>
+            @foreach(var skill in (List<Skill>)ViewData["Skills"])
+            {
+            <li>
+                <span class="name">
+                    @skill.Name
+                </span>
+                @for (var i = 0; i <= (int)ViewData["MaxRating"]; i++)
+                {
+                    <span>
+                        <span class='@(i == @skill.Rating ? "btn number btn-primary" : "btn number btn-outline-secondary")'>@i</span>
+                    </span>
+                }
+                <span class="w60">
+                    <button class="btn btn-primary btnDelete" onclick="return false;">&nbsp;</button>
+                </span>
+            </li>
+            }
+        </ul>
+    </div>
 </div>
 }

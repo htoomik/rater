@@ -1,14 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using Rater.Api.Data;
 using Rater.Api.Models;
+using System.Diagnostics;
 
 namespace Rater.Api.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ISkillsDataStore dataStore;
+
+        public HomeController(ISkillsDataStore dataStore)
+        {
+            this.dataStore = dataStore;
+        }
+
+
         [HttpGet]
         public IActionResult Index()
         {
+            var skills = dataStore.Get();
+            ViewData["MaxRating"] = 5;
+            ViewData["Skills"] = skills;
             return View();
         }
 
