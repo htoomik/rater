@@ -23,7 +23,7 @@
 - logging
 - more sensible project/folder structure (client side app does not belong in Rater.API)
 - scripts to launch/publish
-- document dependencies (.NET Core, TypeScript)
+- document prerequisites (.NET Core, TypeScript)
 
 # Marketing
 - hosting
