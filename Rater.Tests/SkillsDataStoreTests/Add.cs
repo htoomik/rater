@@ -24,7 +24,23 @@ namespace Rater.Tests.SkillsDataStoreTests
             {
                 var result = dataStore.Add(new Skill());
                 Assert.Equal(i + 1, result.Id);
-            }            
+            }
+        }
+
+
+        [Fact]
+        public void When_ItemHasBeenRemoved_Expect_DoesNotReuseId()
+        {
+            var dataStore = new SkillsDataStore();
+
+            var skill1 = dataStore.Add(new Skill());
+            var skill2 = dataStore.Add(new Skill());
+
+            dataStore.Remove(skill1.Id);
+
+            var skill3 = dataStore.Add(new Skill());
+
+            Assert.Equal(3, skill3.Id);
         }
     }
 }

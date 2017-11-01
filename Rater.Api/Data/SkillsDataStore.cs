@@ -5,13 +5,14 @@ namespace Rater.Api.Data
     public class SkillsDataStore : ISkillsDataStore
     {
         private readonly Dictionary<int, Skill> skills = new Dictionary<int, Skill>();
+        private int maxId;
 
         public int Count => skills.Count;
 
 
         public Skill Add(Skill value)
         {
-            value.Id = skills.Count + 1;
+            value.Id = ++maxId;
             skills.Add(value.Id, value);
             return value;
         }
