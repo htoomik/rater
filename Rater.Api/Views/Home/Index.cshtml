@@ -2,10 +2,10 @@
 
 @{ ViewData["Title"] = "Skills rater (MVC version)"; }
 
-@using (Html.BeginForm())
-{
 <div class="container">
     <h1>Skills</h1>
+    @using (Html.BeginForm("Add", "Home"))
+    {
     <div id="addForm">
         @Html.TextBoxFor(model => model.Name, new { @class = "name", placeholder = "Add another skill..." })
         @Html.HiddenFor(model => model.Rating, new { id = "rating" })
@@ -18,29 +18,33 @@
         }
         <input type="submit" value="Add" class="btn btn-success w60" />
     </div>
+    }
     <div id="skillsList">
         <ul>
             @foreach(var skill in (List<Skill>)ViewData["Skills"])
             {
-            <li>
-                <span class="name">
-                    @skill.Name
-                </span>
-                @for (var i = 0; i <= (int)ViewData["MaxRating"]; i++)
-                {
-                    <span>
-                        <span class='@(i == @skill.Rating ? "btn number btn-primary" : "btn number btn-outline-secondary")'>@i</span>
-                    </span>
-                }
-                <span class="w60">
-                    <button class="btn btn-primary btnDelete" onclick="return false;">&nbsp;</button>
-                </span>
-            </li>
+                <li>
+                    @using (Html.BeginForm("Delete", "Home"))
+                    {
+                        <input type="hidden" id="Id" name="Id" value="@skill.Id"/>
+                        <span class="name">
+                            @skill.Name
+                        </span>
+                        for (var i = 0; i <= (int)ViewData["MaxRating"]; i++)
+                        {
+                            <span>
+                                <span class='@(i == @skill.Rating ? "btn number btn-primary" : "btn number btn-outline-secondary")'>@i</span>
+                            </span>
+                        }
+                        <span class="w60">
+                            <input type="submit" class="btn btn-primary btnDelete" value="&nbsp;"/>
+                        </span>
+                    }
+                </li>
             }
         </ul>
     </div>
 </div>
-}
 
 <script type="text/javascript">
 function setRating(elem)

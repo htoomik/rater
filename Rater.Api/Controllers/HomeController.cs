@@ -26,9 +26,18 @@ namespace Rater.Api.Controllers
 
 
         [HttpPost]
-        public IActionResult Index(Skill skill)
+        public IActionResult Add(Skill skill)
         {
             dataStore.Add(skill);
+            return Redirect("/");
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Delete(Skill skill)
+        {
+            dataStore.Remove(skill.Id);
             return Redirect("/");
         }
 
