@@ -15,7 +15,7 @@ dotnet test Rater.Tests
 dotnet run
 ```
 
-Then use your favourite browser to navigate to [http://localhost:5000/index.html](http://localhost:5000/index.html)
+Then use your favourite browser to navigate to either [http://localhost:5000/index.html](http://localhost:5000/index.html) for the Angular version, or to [http://localhost:5000/](http://localhost:5000/) for the ASP.NET MVC version.
 
 # API endpoints
 GET  
