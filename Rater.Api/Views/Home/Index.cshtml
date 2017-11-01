@@ -48,7 +48,7 @@ function setRating(elem)
     var rating = $(elem).val();
     $("#rating").val(rating);
 
-    for(var i = 0; i < @ViewData["MaxRating"]; i++)
+    for(var i = 0; i <= @ViewData["MaxRating"]; i++)
     {
         var label = $("#rating-label" + i);
         if (i == rating)
