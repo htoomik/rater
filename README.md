@@ -2,7 +2,7 @@
 - Allows you to list and rate your skills 
 
 # What for?
-- For me to learn .NET Core, Angular 4 etc
+- For me to try out .NET Core, Angular 4 etc
 - Demonstrate those skills to others
 
 # Try it out
@@ -16,6 +16,9 @@ dotnet run
 ```
 
 Then use your favourite browser to navigate to either [http://localhost:5000/index.html](http://localhost:5000/index.html) for the Angular version, or to [http://localhost:5000/](http://localhost:5000/) for the ASP.NET MVC version.
+
+# Why the two separate front end solutions?
+Only to demonstrate that I can work in both Angular and ASP.NET MVC. The two front ends are totally redundant and would never coexist in a real application. However they do work together without conflict and are fully usable in parallel.
 
 # API endpoints
 GET  
